@@ -1,7 +1,8 @@
-type CreateDataShape<TData, TError = undefined> = {
-  data: TData;
-  error: TError;
+type GetParametersAndReturnType<T extends (...args: any) => any> = {
+  params: Parameters<T>;
+  returnValue: ReturnType<T>;
 };
 
-type Example = CreateDataShape<string>;
-type Example1 = CreateDataShape<string, boolean>;
+type Example = GetParametersAndReturnType<
+  (a: string, b: number, c: boolean) => string
+>;
