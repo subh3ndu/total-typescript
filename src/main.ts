@@ -1,3 +1,7 @@
-type Maybe<T> = T | null | undefined;
+type AddRoutePrefix<TRoute extends string> = `/${TRoute}`;
 
-type a = Maybe<"abcd">;
+// @ts-expect-error
+type Example2 = AddRoutePrefix<boolean>;
+
+// @ts-expect-error
+type Example3 = AddRoutePrefix<1>;
