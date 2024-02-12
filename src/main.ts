@@ -1,3 +1,3 @@
-type TemplateLiteralKey = `${"user" | "post" | "comment"}${"Id" | "Name"}`;
+export type Event = `log_in` | 'log_out' | "sign_up";
 
-type ObjectOfKeys = Record<TemplateLiteralKey, string>;
+export type ObjectOfKeys = Record<Uppercase<Event>, string>;
