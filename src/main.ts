@@ -1,14 +1,24 @@
-const testingFrameworks = {
-  vitest: {
-    label: "Vitest",
-  },
-  jest: {
-    label: "Jest",
-  },
-  mocha: {
-    label: "Mocha",
-  },
-};
+//* Discriminated Union type
+type A =
+  | {
+      type: "a";
+      a: string;
+    }
+  | {
+      type: "b";
+      b: string;
+    }
+  | {
+      type: "c";
+      c: string;
+    };
 
-// type testingFrameworks = unknown;
-type TestingFrameworks = keyof typeof testingFrameworks;
+//* Union type
+type B = "a" | "b" | "c";
+
+//* Enum type
+enum C {
+  A = "a",
+  B = "b",
+  C = "c",
+}
