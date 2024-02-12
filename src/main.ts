@@ -1,5 +1,5 @@
-type BreadTypes = "rye" | "brown" | "white";
+import { S } from 'ts-toolbelt'
 
-type Fillings = "cheese" | "salami" | "ham";
+type Path = "Users/John/Documents/notes.txt";
 
-type Sandwich = `${BreadTypes} sandwich with ${Fillings}`
+type SplitPath = S.Split<Path, '/'>
