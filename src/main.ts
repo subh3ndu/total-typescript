@@ -12,4 +12,4 @@ export type Events =
       event: KeyboardEvent;
     };
 
-export type ClickEvent = Extract<Events, { type: "click" }>;
+export type ClickEvent = Exclude<Events, { type: "keydown" }>;
