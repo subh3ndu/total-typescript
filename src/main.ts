@@ -1,14 +1,16 @@
-const testingFrameworks = {
-  vitest: {
-    label: "Vitest",
-  },
-  jest: {
-    label: "Jest",
-  },
-  mocha: {
-    label: "Mocha",
-  },
-};
+type Route = `/${string}`;
 
-// type testingFrameworks = unknown;
-type TestingFrameworks = keyof typeof testingFrameworks;
+export const goToRoute = (route: Route) => {}
+
+// Should Success
+goToRoute("/users");
+goToRoute("/");
+goToRoute("/admin/users");
+
+// Should Error
+
+// @ts-expect-error
+goToRoute('users/1')
+
+// @ts-expect-error
+goToRoute('http://facebook.com')
