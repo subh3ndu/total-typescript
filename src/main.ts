@@ -1,7 +1,6 @@
-type AddRoutePrefix<TRoute extends string> = `/${TRoute}`;
+type CreateDataShape<T, U> = {
+  data: T;
+  error: U;
+};
 
-// @ts-expect-error
-type Example2 = AddRoutePrefix<boolean>;
-
-// @ts-expect-error
-type Example3 = AddRoutePrefix<1>;
+type Example = CreateDataShape<string, boolean>;
