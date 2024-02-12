@@ -1,8 +1,4 @@
-export const frontendToBackendMap = {
-  singleModule: "SINGLE_MODULE",
-  multiModule: "MULTI_MODULE",
-  sharedModule: "SHARED_MODULE",
-} as const;
+const fruits = ["apple", "banana", "orange"] as const;
 
-export type BackendModuleEnum =
-  (typeof frontendToBackendMap)[keyof typeof frontendToBackendMap];
+type AppleOrBanana = (typeof fruits)[0 | 1];
+type Fruit = (typeof fruits)[number];
