@@ -1,24 +1,15 @@
-//* Discriminated Union type
-type A =
+export type Events =
   | {
-      type: "a";
-      a: string;
+      type: "click";
+      event: MouseEvent;
     }
   | {
-      type: "b";
-      b: string;
+      type: "focus";
+      event: FocusEvent;
     }
   | {
-      type: "c";
-      c: string;
+      type: "keydown";
+      event: KeyboardEvent;
     };
 
-//* Union type
-type B = "a" | "b" | "c";
-
-//* Enum type
-enum C {
-  A = "a",
-  B = "b",
-  C = "c",
-}
+export type ClickEvent = Extract<Events, { type: "click" }>;
