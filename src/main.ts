@@ -1,13 +1,10 @@
-const makeQuery = (
-  url: string,
-  opts?: {
-    method?: string;
-    headers?: {
-      [key: string]: string;
-    };
-    body?: string;
-  }
-) => {};
+const getUser = () => {
+  return Promise.resolve({
+    id: "123",
+    name: "John",
+    email: "john@exmaple.com",
+  });
+};
 
-// type MakeQueryParameters = unknown;
-type MakeQueryParameters = Parameters<typeof makeQuery>;
+// type ReturnValue = unknown;
+type ReturnValue = Awaited<ReturnType<typeof getUser>>;
