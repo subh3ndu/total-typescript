@@ -1,6 +1,13 @@
-const myFunc = () => {
-  return "string";
-};
+const makeQuery = (
+  url: string,
+  opts?: {
+    method?: string;
+    headers?: {
+      [key: string]: string;
+    };
+    body?: string;
+  }
+) => {};
 
-// type MyFuncReturn = unknown;
-type MyFuncReturn = ReturnType<typeof myFunc>;
+// type MakeQueryParameters = unknown;
+type MakeQueryParameters = Parameters<typeof makeQuery>;
