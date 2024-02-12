@@ -1,10 +1,14 @@
-const getUser = () => {
-  return Promise.resolve({
-    id: "123",
-    name: "John",
-    email: "john@exmaple.com",
-  });
+const testingFrameworks = {
+  vitest: {
+    label: "Vitest",
+  },
+  jest: {
+    label: "Jest",
+  },
+  mocha: {
+    label: "Mocha",
+  },
 };
 
-// type ReturnValue = unknown;
-type ReturnValue = Awaited<ReturnType<typeof getUser>>;
+// type testingFrameworks = unknown;
+type TestingFrameworks = keyof typeof testingFrameworks;
