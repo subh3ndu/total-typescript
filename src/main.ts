@@ -1,3 +1,5 @@
-type Routes = "/users" | "/users/:id" | "/posts" | "/posts/:id";
+type BreadTypes = "rye" | "brown" | "white";
 
-type DynamicRoutes = Extract<Routes, `${string}:${string}`>
+type Fillings = "cheese" | "salami" | "ham";
+
+type Sandwich = `${BreadTypes} sandwich with ${Fillings}`
