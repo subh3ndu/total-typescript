@@ -1,5 +1,3 @@
-import { S } from 'ts-toolbelt'
+type TemplateLiteralKey = `${"user" | "post" | "comment"}${"Id" | "Name"}`;
 
-type Path = "Users/John/Documents/notes.txt";
-
-type SplitPath = S.Split<Path, '/'>
+type ObjectOfKeys = Record<TemplateLiteralKey, string>;
