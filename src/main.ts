@@ -1,3 +1,3 @@
-type ReturnWhatIPassIn<T> = T;
+type Maybe<T> = T | null | undefined;
 
-type test = ReturnWhatIPassIn<null>
+type a = Maybe<"abcd">;
