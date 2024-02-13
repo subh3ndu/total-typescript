@@ -1,8 +1,9 @@
-// {} is assignable to every thing that is not null or undefined
-export type Maybe<T extends {}> = T | null | undefined;
+type NonEmptyArray<T> = [T, ...T[]]; // same as [T, ...Array<T>]
+
+export const makeEnum = (values: NonEmptyArray<string>) => {};
+
+makeEnum(["a"]);
+makeEnum(["a", "b", "c"]);
 
 // @ts-expect-error
-export type Example = Maybe<null>;
-
-// @ts-expect-error
-export type Example1 = Maybe<undefined>;
+makeEnum([]);
