@@ -1,3 +1,3 @@
-export type Event = `log_in` | 'log_out' | "sign_up";
+type YouSayGoodbyeAndISayHello<T> = T extends "hello" ? "goodbye" : "hello";
 
-export type ObjectOfKeys = Record<Uppercase<Event>, string>;
+var Example: YouSayGoodbyeAndISayHello<"a">;
