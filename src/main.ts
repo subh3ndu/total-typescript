@@ -1,33 +1,23 @@
-interface MyComplexInterface<Event, Context, Name, Point> {
-  getEvent: () => Event;
-  getContext: () => Context;
-  getName: () => Name;
-  getPoint: () => Point;
-}
+import { S } from "ts-toolbelt";
 
-type example = MyComplexInterface<
-  "event",
-  "window",
-  "my-event",
-  { x: 12; y: 14 }
->;
+type Names = [
+  "Matt Pocock",
+  "Jimi Hendrix",
+  "Eric Calpton",
+  "John Mayer",
+  "BB King"
+];
 
-// My Solution
-type getPoint<T> = T extends { getPoint: infer TPoint }
-  ? TPoint extends () => any
-    ? ReturnType<TPoint>
-    : never
+// My solution
+type GetSurname<T extends string> = S.Split<T, " ">[1];
+
+// Author solution
+type GetSurname2<T> = T extends `${string} ${infer LastName}`
+  ? LastName
   : never;
 
-// Author Solution
-type getPoint2<T> = T extends MyComplexInterface<
-  infer TEvent,
-  infer TContext,
-  infer TName,
-  infer TPoint
->
-  ? TPoint
-  : never;
-
-let a: getPoint<example>;
-let b: getPoint2<example>;
+export type Example = GetSurname2<Names[0]>;
+export type Example1 = GetSurname2<Names[1]>;
+export type Example2 = GetSurname2<Names[2]>;
+export type Example3 = GetSurname2<Names[3]>;
+export type Example4 = GetSurname2<Names[4]>;
