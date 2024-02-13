@@ -1,23 +1,27 @@
-import { S } from "ts-toolbelt";
+const getServerSideProps = async () => {
+  const data = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const json: { title: string } = await data.json();
 
-type Names = [
-  "Matt Pocock",
-  "Jimi Hendrix",
-  "Eric Calpton",
-  "John Mayer",
-  "BB King"
-];
+  return {
+    props: {
+      json,
+      isCool: true,
+    },
+  };
+};
 
-// My solution
-type GetSurname<T extends string> = S.Split<T, " ">[1];
-
-// Author solution
-type GetSurname2<T> = T extends `${string} ${infer LastName}`
-  ? LastName
+// My Solution
+type InferPropsFromServerSideFunction<T extends () => any> = Awaited<
+  ReturnType<T>
+> extends { props: any }
+  ? Awaited<ReturnType<T>>["props"]
   : never;
 
-export type Example = GetSurname2<Names[0]>;
-export type Example1 = GetSurname2<Names[1]>;
-export type Example2 = GetSurname2<Names[2]>;
-export type Example3 = GetSurname2<Names[3]>;
-export type Example4 = GetSurname2<Names[4]>;
+// Author Solution
+type InferPropsFromServerSideFunction2<T> = T extends () => Promise<{
+  props: infer P;
+}>
+  ? P
+  : never;
+
+type example = InferPropsFromServerSideFunction2<typeof getServerSideProps>;
