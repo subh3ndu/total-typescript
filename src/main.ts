@@ -1,15 +1,9 @@
-type EG<T extends string> = Lowercase<T> extends "hello"
-  ? "goodbye"
-  : Lowercase<T> extends "goodbye"
-  ? "hello"
-  : never;
+// Soln-1
+type GetDataValue<T> = T extends { data: any } ? T["data"] : never;
 
-let Example: EG<"a">;
+// Soln-2
+type GetDataValue2<T> = T extends { data: infer TData } ? TData : never;
 
-type YouSayGoodbyeAndISayHello<T> = T extends "hello" | "goodbye"
-  ? T extends "hello"
-    ? "goodbye"
-    : "hello"
-  : never;
-
-let Example2: YouSayGoodbyeAndISayHello<"hola">;
+let example: GetDataValue<{
+  data: "hello";
+}>;
