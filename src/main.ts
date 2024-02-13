@@ -1,9 +1,33 @@
-// Soln-1
-type GetDataValue<T> = T extends { data: any } ? T["data"] : never;
+interface MyComplexInterface<Event, Context, Name, Point> {
+  getEvent: () => Event;
+  getContext: () => Context;
+  getName: () => Name;
+  getPoint: () => Point;
+}
 
-// Soln-2
-type GetDataValue2<T> = T extends { data: infer TData } ? TData : never;
+type example = MyComplexInterface<
+  "event",
+  "window",
+  "my-event",
+  { x: 12; y: 14 }
+>;
 
-let example: GetDataValue<{
-  data: "hello";
-}>;
+// My Solution
+type getPoint<T> = T extends { getPoint: infer TPoint }
+  ? TPoint extends () => any
+    ? ReturnType<TPoint>
+    : never
+  : never;
+
+// Author Solution
+type getPoint2<T> = T extends MyComplexInterface<
+  infer TEvent,
+  infer TContext,
+  infer TName,
+  infer TPoint
+>
+  ? TPoint
+  : never;
+
+let a: getPoint<example>;
+let b: getPoint2<example>;
